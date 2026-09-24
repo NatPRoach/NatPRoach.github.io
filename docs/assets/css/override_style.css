@@ -1,0 +1,127 @@
+---
+---
+
+/*
+ * Site stylesheet. main-style.html links only this file, not the theme's
+ * style.css, so everything the pages need is defined here. Colours and type
+ * follow pages-themes/minimal.
+ *
+ * Classes in use (main-style.html, about.md, resume.md, curriculum_vitae.md):
+ *   sidebar-main-text-split, sidebar, vertical-spacing, headshot_box,
+ *   headshot_image, bottom-aligned, view, main-text, banner_image, pdf-download, pdf-embed
+ */
+
+/* Noto Sans files are served from the remote theme's assets/fonts/. */
+@font-face { font-family: 'Noto Sans'; font-weight: 400; font-style: normal; src: local("Noto Sans"), local("Noto-Sans-regular"), url("../fonts/Noto-Sans-regular/Noto-Sans-regular.woff2") format("woff2"), url("../fonts/Noto-Sans-regular/Noto-Sans-regular.woff") format("woff"); }
+@font-face { font-family: 'Noto Sans'; font-weight: 700; font-style: normal; src: local("Noto Sans Bold"), local("Noto-Sans-700"), url("../fonts/Noto-Sans-700/Noto-Sans-700.woff2") format("woff2"), url("../fonts/Noto-Sans-700/Noto-Sans-700.woff") format("woff"); }
+@font-face { font-family: 'Noto Sans'; font-weight: 400; font-style: italic; src: local("Noto Sans Italic"), local("Noto-Sans-italic"), url("../fonts/Noto-Sans-italic/Noto-Sans-italic.woff2") format("woff2"), url("../fonts/Noto-Sans-italic/Noto-Sans-italic.woff") format("woff"); }
+@font-face { font-family: 'Noto Sans'; font-weight: 700; font-style: italic; src: local("Noto Sans Bold Italic"), local("Noto-Sans-700italic"), url("../fonts/Noto-Sans-700italic/Noto-Sans-700italic.woff2") format("woff2"), url("../fonts/Noto-Sans-700italic/Noto-Sans-700italic.woff") format("woff"); }
+
+:root {
+  --text: #727272;
+  --heading: #222;
+  --link: #267CB9;
+  --link-hover: #069;
+  --muted: #777;
+  --sidebar-width: 270px;
+  --gutter: 50px;
+}
+
+/* ---- Base ---------------------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: var(--gutter);
+  background-color: #fff;
+  color: var(--text);
+  font: 14px/1.5 "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 { color: var(--heading); margin: 0 0 20px; line-height: 1.1; }
+h1 { font-size: 28px; }
+h2 { color: #393939; }
+h3, h4, h5, h6 { color: #494949; }
+
+p, ul, ol { margin: 0 0 20px; }
+
+a { color: var(--link); text-decoration: none; }
+/* Underline rather than bold on hover, so link text doesn't change width and
+   shift the words around it. */
+a:hover, a:focus { color: var(--link-hover); text-decoration: underline; }
+a small { display: block; margin-top: -0.3em; font-size: 11px; color: var(--muted); }
+
+strong { color: var(--heading); font-weight: 700; }
+small { font-size: 11px; }
+img { max-width: 100%; height: auto; }
+
+/* ---- Layout: fixed-width sidebar beside a fluid content column ------------ */
+
+.sidebar-main-text-split {
+  display: flex;
+  gap: var(--gutter);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sidebar { flex: 0 0 var(--sidebar-width); }
+
+/* The sidebar stays in view while the content scrolls, with the GitHub link
+   pinned to its bottom edge. */
+.vertical-spacing {
+  position: sticky;
+  top: var(--gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: calc(100vh - 2 * var(--gutter));
+}
+
+.bottom-aligned p { margin-bottom: 0; }
+
+/* min-width: 0 lets the column shrink below its content's natural width
+   instead of overflowing the row. */
+.main-text { flex: 1 1 auto; min-width: 0; }
+
+/* ---- Components ---------------------------------------------------------- */
+
+.headshot_box { display: flex; justify-content: center; }
+
+.headshot_image {
+  display: block;
+  width: 80%;
+  margin: 20px auto;
+}
+
+.banner_image {
+  display: block;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+/* The download link sits above the embed; its height is subtracted so the
+   two together fill the viewport without scrolling the page. */
+.pdf-download { margin: 0 0 12px; line-height: 21px; }
+
+.pdf-embed {
+  display: block;
+  width: 100%;
+  height: calc(100vh - 2 * var(--gutter) - 33px);
+  min-height: 500px;
+}
+
+/* ---- Narrow screens: stack the sidebar above the content ----------------- */
+
+@media (max-width: 720px) {
+  :root { --gutter: 16px; }
+
+  .sidebar-main-text-split { flex-direction: column; gap: 24px; }
+  .sidebar { flex: none; }
+
+  .vertical-spacing { position: static; min-height: 0; }
+
+  .headshot_image { width: 50%; max-width: 180px; }
+
+  .pdf-embed { height: 80vh; }
+}
