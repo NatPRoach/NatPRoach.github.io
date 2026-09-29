@@ -1,0 +1,22 @@
+# Jekyll build output and caches
+docs/_site/
+docs/.jekyll-cache/
+docs/.jekyll-metadata
+docs/.sass-cache/
+
+# Local Bundler installs (only if you use `bundle config set path vendor/bundle`)
+docs/.bundle/
+docs/vendor/
+
+# PDFs compiled by CI
+docs/assets/pdfs/*.pdf
+
+# Typst's default output when compiled without an output path
+src/*.pdf
+
+# Company-specific résumés, kept private
+src/tailored/
+
+# Tooling / OS
+.pytest_cache/
+.DS_Store

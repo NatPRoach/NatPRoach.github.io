@@ -1,0 +1,17 @@
+{
+  // Prose paragraphs are written one per line.
+  "MD013": false,
+
+  // Pages embed the résumé/CV PDFs and a banner image with raw HTML.
+  "MD033": {
+    "allowed_elements": ["object", "p", "a", "img"]
+  },
+
+  // Pages that only embed a PDF have no heading.
+  "MD041": false,
+
+  // Jekyll's front matter `title:` is page metadata, not a second H1.
+  "MD025": {
+    "front_matter_title": ""
+  }
+}
