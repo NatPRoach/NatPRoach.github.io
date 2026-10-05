@@ -39,5 +39,11 @@
       label: [LinkedIn],
       icon: _linkedin-icon,
     ),
+    (
+      url: "https://natproach.github.io/",
+      label: [Website],
+      icon: "world-line.png",
+      icon-width: 5mm,
+    )
   ),
 )
