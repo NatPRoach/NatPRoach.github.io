@@ -30,7 +30,7 @@ focus on #bu[biological insights]].
 = TECHNICAL SKILLS
 
 // Trimmed to keep experience high on page 1; the CV lists every category.
-#skills(select(d.skills, "languages", "cloud", "backend", "python-libraries", "bioinformatics-tools"))
+#skills(select(d.skills, "languages", "cloud", "backend", "python-libraries", "bioinformatics-tools", "genomics"))
 
 = PROFESSIONAL EXPERIENCE
 
